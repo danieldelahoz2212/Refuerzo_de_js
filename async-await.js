@@ -46,3 +46,31 @@ const getSalario = (id) => {
             : reject(`El salario del empleado ${id} no Existe`);
     })
 }
+
+const geInfoUsuario = async (id) => {
+
+    try {
+        const empleado = await getEmpeado(id);
+        const salario = await getSalario(id);
+
+        return `El salario del empleado: ${empleado} es de ${salario}`;
+    } catch (err) {
+        throw err;
+    }
+}
+
+geInfoUsuario()
+    .then(
+        msg => {
+            console.log('TODO BIEN!');
+            console.log(msg)
+        }
+    )
+    .catch(
+        err => {
+            console.log('TODO MAL!');
+            console.log(err)
+        }
+    );
+
+const id = 3;
